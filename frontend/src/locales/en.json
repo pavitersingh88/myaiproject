@@ -1,0 +1,80 @@
+{
+  "app": {
+    "name": "Ask SarAi",
+    "tagline": "Designed for Dignity. Powered by AI."
+  },
+  "nav": {
+    "home": "Home",
+    "tutorials": "Tutorials",
+    "reminders": "Reminders",
+    "careTeam": "Care Team",
+    "messages": "Messages",
+    "resources": "Resources",
+    "content": "Content",
+    "settings": "Settings"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out",
+    "email": "Email",
+    "password": "Password",
+    "fullName": "Full Name",
+    "role": "Role",
+    "forgotPassword": "Forgot Password?",
+    "createAccount": "Create Account",
+    "alreadyHaveAccount": "Already have an account?",
+    "dontHaveAccount": "Don't have an account?"
+  },
+  "home": {
+    "welcome": "Welcome",
+    "askQuestion": "Ask a Question",
+    "startTutorial": "Start Tutorial",
+    "addReminder": "Add Reminder",
+    "tipOfTheDay": "Tip of the Day"
+  },
+  "tutorials": {
+    "title": "Tutorials",
+    "browse": "Browse",
+    "search": "Search tutorials...",
+    "filter": "Filter",
+    "recommended": "Recommended for You",
+    "inProgress": "In Progress",
+    "completed": "Completed"
+  },
+  "reminders": {
+    "title": "Reminders",
+    "upcoming": "Upcoming",
+    "missed": "Missed",
+    "completed": "Completed",
+    "create": "Create Reminder",
+    "edit": "Edit Reminder",
+    "snooze": "Snooze",
+    "complete": "Mark Complete"
+  },
+  "careTeam": {
+    "title": "Care Team",
+    "directory": "Directory",
+    "sendMessage": "Send Message"
+  },
+  "settings": {
+    "title": "Settings",
+    "accessibility": "Accessibility",
+    "fontSize": "Font Size",
+    "contrast": "Contrast",
+    "language": "Language",
+    "notifications": "Notifications",
+    "account": "Account",
+    "help": "Help & Support"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "confirm": "Confirm"
+  }
+}

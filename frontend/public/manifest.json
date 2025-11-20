@@ -1,0 +1,27 @@
+{
+  "name": "Ask SarAi - Garrison Care",
+  "short_name": "SarAi",
+  "description": "Designed for Dignity. Powered by AI. A comprehensive care platform for older adults and their support network.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#132A49",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["health", "medical", "lifestyle"],
+  "lang": "en",
+  "dir": "ltr"
+}

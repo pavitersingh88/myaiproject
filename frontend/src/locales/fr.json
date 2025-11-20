@@ -1,0 +1,80 @@
+{
+  "app": {
+    "name": "Ask SarAi",
+    "tagline": "Conçu pour la dignité. Propulsé par IA."
+  },
+  "nav": {
+    "home": "Accueil",
+    "tutorials": "Tutoriels",
+    "reminders": "Rappels",
+    "careTeam": "Équipe de soins",
+    "messages": "Messages",
+    "resources": "Ressources",
+    "content": "Contenu",
+    "settings": "Paramètres"
+  },
+  "auth": {
+    "signIn": "Se connecter",
+    "signUp": "S'inscrire",
+    "signOut": "Se déconnecter",
+    "email": "Courriel",
+    "password": "Mot de passe",
+    "fullName": "Nom complet",
+    "role": "Rôle",
+    "forgotPassword": "Mot de passe oublié?",
+    "createAccount": "Créer un compte",
+    "alreadyHaveAccount": "Vous avez déjà un compte?",
+    "dontHaveAccount": "Vous n'avez pas de compte?"
+  },
+  "home": {
+    "welcome": "Bienvenue",
+    "askQuestion": "Poser une question",
+    "startTutorial": "Commencer le tutoriel",
+    "addReminder": "Ajouter un rappel",
+    "tipOfTheDay": "Conseil du jour"
+  },
+  "tutorials": {
+    "title": "Tutoriels",
+    "browse": "Parcourir",
+    "search": "Rechercher des tutoriels...",
+    "filter": "Filtrer",
+    "recommended": "Recommandé pour vous",
+    "inProgress": "En cours",
+    "completed": "Terminé"
+  },
+  "reminders": {
+    "title": "Rappels",
+    "upcoming": "À venir",
+    "missed": "Manqués",
+    "completed": "Terminés",
+    "create": "Créer un rappel",
+    "edit": "Modifier le rappel",
+    "snooze": "Reporter",
+    "complete": "Marquer comme terminé"
+  },
+  "careTeam": {
+    "title": "Équipe de soins",
+    "directory": "Répertoire",
+    "sendMessage": "Envoyer un message"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "accessibility": "Accessibilité",
+    "fontSize": "Taille de police",
+    "contrast": "Contraste",
+    "language": "Langue",
+    "notifications": "Notifications",
+    "account": "Compte",
+    "help": "Aide et support"
+  },
+  "common": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "success": "Succès",
+    "confirm": "Confirmer"
+  }
+}

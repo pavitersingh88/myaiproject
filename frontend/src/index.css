@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Open Sans', 'Roboto', 'Arial', sans-serif;
+    background-color: #FFFFFF;
+    color: #132A49;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  h1, h2, h3 {
+    font-family: Georgia, serif;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    background-color: #E8DCC2;
+    color: #132A49;
+    padding: 0.75rem 1.5rem;
+    border-radius: 1rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    min-height: 44px;
+  }
+
+  .btn-primary:hover {
+    background-color: #C8C3BD;
+  }
+
+  .btn-secondary {
+    background-color: #132A49;
+    color: #FFFFFF;
+    padding: 0.75rem 1.5rem;
+    border-radius: 1rem;
+    font-weight: 600;
+    transition: opacity 0.2s;
+    min-height: 44px;
+  }
+
+  .btn-secondary:hover {
+    opacity: 0.9;
+  }
+
+  .card {
+    background-color: #FFFFFF;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    padding: 2rem;
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #C8C3BD;
+    border-radius: 0.75rem;
+    min-height: 44px;
+  }
+
+  .input-field:focus {
+    outline: none;
+    ring: 2px;
+    border-color: #132A49;
+  }
+
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+  .nav-item-active {
+    color: #132A49;
+    font-weight: 600;
+  }
+
+  .nav-item-inactive {
+    color: #C8C3BD;
+  }
+}
+
+.focus-visible:focus {
+  outline: 3px solid #132A49;
+  outline-offset: 2px;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
