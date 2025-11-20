@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { db } = require('../config/firebase');
+const { db, admin } = require('../config/firebase');
 const { authenticateUser } = require('../middleware/auth');
 
 router.get('/:conversationId', authenticateUser, async (req, res) => {
@@ -38,12 +38,15 @@ router.get('/:conversationId', authenticateUser, async (req, res) => {
       ...doc.data()
     }));
 
-    await db.collection('conversationMembers')
-      .doc(`${userId}_${conversationId}`)
-      .update({
-        unreadCount: 0,
-        lastReadAt: new Date().toISOString()
-      });
+    const memberRef = db.collection('conversationMembers')
+      .doc(`${userId}_${conversationId}`);
+
+    await memberRef.set({
+      unreadCount: 0,
+      lastReadAt: new Date().toISOString(),
+      userId,
+      conversationId
+    }, { merge: true });
 
     res.json(messages.reverse());
   } catch (error) {
@@ -104,9 +107,13 @@ router.post('/:conversationId', authenticateUser, async (req, res) => {
     conversation.participantIds.forEach(pId => {
       if (pId !== userId) {
         const memberRef = db.collection('conversationMembers').doc(`${pId}_${conversationId}`);
-        batch.update(memberRef, {
-          unreadCount: db.FieldValue.increment(1)
-        });
+        batch.set(memberRef, {
+          userId: pId,
+          conversationId,
+          unreadCount: admin.firestore.FieldValue.increment(1),
+          lastReadAt: null,
+          joinedAt: conversation.createdAt || new Date().toISOString()
+        }, { merge: true });
       }
     });
 

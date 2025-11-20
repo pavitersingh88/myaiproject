@@ -41,28 +41,36 @@ router.get('/', authenticateUser, async (req, res) => {
 
 router.post('/create', authenticateUser, async (req, res) => {
   try {
-    const { participantIds, name, isGroup, careTeamId } = req.body;
+    const { participantIds = [], name, isGroup, careTeamId } = req.body;
     const userId = req.userId;
 
-    if (!participantIds.includes(userId)) {
-      participantIds.push(userId);
-    }
+    const participants = Array.from(new Set([...participantIds, userId])).sort();
 
     const existingConvSnapshot = await db.collection('conversations')
-      .where('participantIds', '==', participantIds.sort())
+      .where('participantIds', '==', participants)
       .where('isGroup', '==', false)
       .limit(1)
       .get();
 
     if (!isGroup && !existingConvSnapshot.empty) {
       const existingConv = { id: existingConvSnapshot.docs[0].id, ...existingConvSnapshot.docs[0].data() };
+
+      const memberRef = db.collection('conversationMembers').doc(`${userId}_${existingConv.id}`);
+      await memberRef.set({
+        userId,
+        conversationId: existingConv.id,
+        unreadCount: 0,
+        lastReadAt: new Date().toISOString(),
+        joinedAt: existingConv.createdAt
+      }, { merge: true });
+
       return res.json(existingConv);
     }
 
     const conversation = {
       type: isGroup ? 'group' : 'direct',
       name: isGroup ? name : null,
-      participantIds: participantIds.sort(),
+      participantIds: participants,
       careTeamId: careTeamId || null,
       lastMessage: null,
       createdAt: new Date().toISOString(),
@@ -73,7 +81,7 @@ router.post('/create', authenticateUser, async (req, res) => {
     const docRef = await db.collection('conversations').add(conversation);
 
     const batch = db.batch();
-    participantIds.forEach(pId => {
+    participants.forEach(pId => {
       const memberRef = db.collection('conversationMembers').doc(`${pId}_${docRef.id}`);
       batch.set(memberRef, {
         userId: pId,
