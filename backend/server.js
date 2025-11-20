@@ -5,6 +5,7 @@ const path = require('path');
 const careTeamsRouter = require('./routes/careTeams');
 const conversationsRouter = require('./routes/conversations');
 const messagesRouter = require('./routes/messages');
+const usersRouter = require('./routes/users');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -19,6 +20,7 @@ app.get('/api/health', (req, res) => {
 app.use('/api/care-teams', careTeamsRouter);
 app.use('/api/conversations', conversationsRouter);
 app.use('/api/messages', messagesRouter);
+app.use('/api/users', usersRouter);
 
 app.use(express.static(path.join(__dirname, '../frontend/src')));
 

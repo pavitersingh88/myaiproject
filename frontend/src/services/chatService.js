@@ -98,6 +98,21 @@ export const chatService = {
     return response.json();
   },
 
+  async registerUserProfile(profile) {
+    const token = await getAuthToken();
+    const response = await fetch(`${API_URL}/users/register`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(profile)
+    });
+
+    if (!response.ok) throw new Error('Failed to register user profile');
+    return response.json();
+  },
+
   subscribeToConversations(userId, callback) {
     const q = query(
       collection(db, 'conversations'),

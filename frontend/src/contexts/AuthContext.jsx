@@ -7,6 +7,7 @@ import {
 } from 'firebase/auth';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { auth, db } from '../services/firebase';
+import { chatService } from '../services/chatService';
 
 const AuthContext = createContext({});
 
@@ -76,6 +77,12 @@ export const AuthProvider = ({ children }) => {
       careTeam: 'default-team',
       createdAt: new Date().toISOString(),
       lastSeen: new Date().toISOString()
+    });
+
+    await chatService.registerUserProfile({
+      email,
+      full_name: fullName,
+      role
     });
 
     return userCredential;

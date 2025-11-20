@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { db } = require('../config/firebase');
+const { db, admin } = require('../config/firebase');
+const DEFAULT_CARE_TEAM_ID = 'default-team';
 const { authenticateUser } = require('../middleware/auth');
 
 router.get('/my-team', authenticateUser, async (req, res) => {
@@ -14,7 +15,22 @@ router.get('/my-team', authenticateUser, async (req, res) => {
     }
 
     const userData = userDoc.data();
-    const careTeamId = userData.careTeam || 'default-team';
+    const careTeamId = userData.careTeam || DEFAULT_CARE_TEAM_ID;
+
+    if (!userData.careTeam) {
+      await db.collection('users').doc(userId).set({ careTeam: careTeamId }, { merge: true });
+    }
+
+    const careTeamRef = db.collection('careTeams').doc(careTeamId);
+    await careTeamRef.set(
+      {
+        id: careTeamId,
+        name: 'Care Team',
+        memberIds: admin.firestore.FieldValue.arrayUnion(userId),
+        updatedAt: new Date().toISOString()
+      },
+      { merge: true }
+    );
 
     const membersSnapshot = await db.collection('users')
       .where('careTeam', '==', careTeamId)
