@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { db } = require('../config/firebase');
+const { db, admin } = require('../config/firebase');
 const { authenticateUser } = require('../middleware/auth');
 
 router.get('/:conversationId', authenticateUser, async (req, res) => {
@@ -105,7 +105,7 @@ router.post('/:conversationId', authenticateUser, async (req, res) => {
       if (pId !== userId) {
         const memberRef = db.collection('conversationMembers').doc(`${pId}_${conversationId}`);
         batch.update(memberRef, {
-          unreadCount: db.FieldValue.increment(1)
+          unreadCount: admin.firestore.FieldValue.increment(1)
         });
       }
     });
